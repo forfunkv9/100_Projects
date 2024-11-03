@@ -1,59 +1,44 @@
-let grid_container	= document.getElementsByClassName('grid-container')[0]
-let justify_content = document.getElementById('justify-content')
-let align_content	= document.getElementById('align-content')
-let justify_items	= document.getElementById('justify-items')
-let align_items		= document.getElementById('align-items')
-let rest			= document.getElementById('rest')
+let grid_container       = document.getElementsByClassName('grid-container' )[0]
+let justify_content      = document.getElementById('justify-content')
+let align_content        = document.getElementById('align-content')
+let justify_items        = document.getElementById('justify-items')
+let align_items          = document.getElementById('align-items')
+let column_gap           = document.getElementById('column-gap')
+let row_gap              = document.getElementById('row-gap')
+
+let rest_justify_content = document.getElementById('rest-justify-content')
+let rest_align_content   = document.getElementById('rest-align-content')
+let rest_justify_items   = document.getElementById('rest-justify-items')
+let rest_align_items     = document.getElementById('rest-align-items')
+let rest_column_gap	     = document.getElementById('rest-column-gap')
+let rest_row_gap         = document.getElementById('rest-row-gap')
+let rest_all             = document.getElementById('rest-all')
 
 function update(){
-	// justify content -----------------------------------------------------------------------
-	switch(justify_content.value) {
-		case "normal":			grid_container.style.justifyContent = "normal";			break;
-		case "space-evenly":	grid_container.style.justifyContent = "space-evenly";	break;
-		case "space-around":	grid_container.style.justifyContent = "space-around";	break;
-		case "space-between":	grid_container.style.justifyContent = "space-between";	break;
-		case "center":			grid_container.style.justifyContent = "center";			break;
-		case "start":			grid_container.style.justifyContent = "start";			break;
-		case "end":				grid_container.style.justifyContent = "end";			break;
-	} 
-
-	// align content -------------------------------------------------------------------------
-	switch(align_content.value) {
-		case "normal":			grid_container.style.alignContent = "normal";			break;
-		case "center":			grid_container.style.alignContent = "center";			break;
-		case "space-evenly":	grid_container.style.alignContent = "space-evenly";		break;
-		case "space-around":	grid_container.style.alignContent = "space-around";		break;
-		case "space-between":	grid_container.style.alignContent = "space-between";	break;
-		case "start":			grid_container.style.alignContent = "start";			break;
-		case "end":				grid_container.style.alignContent = "end";				break;
-	} 
-
-	// justify-items -------------------------------------------------------------------------
-	switch(justify_items.value) {
-		case "stretch":			grid_container.style.justifyItems = "stretch";			break;
-		case "center":			grid_container.style.justifyItems = "center";			break;
-		case "start":			grid_container.style.justifyItems = "start";			break;
-		case "end":				grid_container.style.justifyItems = "end";				break;
-	} 
-
-	// align-items ---------------------------------------------------------------------------
-	switch(align_items.value) {
-		case "stretch":			grid_container.style.alignItems = "stretch";			break;
-		case "center":			grid_container.style.alignItems = "center";				break;
-		case "start":			grid_container.style.alignItems = "start";				break;
-		case "end":				grid_container.style.alignItems = "end";				break;
-		case "baseline":		grid_container.style.alignItems = "baseline";			break;
-	} 
+	grid_container.style.justifyContent = justify_content.value
+	grid_container.style.alignContent	= align_content.value
+	grid_container.style.justifyItems	= justify_items.value
+	grid_container.style.alignItems		= align_items.value
+	grid_container.style.columnGap      = column_gap.value + 'px'
+	grid_container.style.rowGap         = row_gap.value + 'px'
 
     requestAnimationFrame(update)
 }
 update()
 
-rest.onclick = function () {
-	console.log('hi')
-justify_content.value = 'normal'
-align_content.value = 'normal'
-justify_items.value = 'stretch'
-align_items.value = 'stretch'
+rest_justify_content.onclick = () => { justify_content.value = 'normal' }
+rest_align_content.onclick   = () => { align_content.value = 'normal' }
+rest_justify_items.onclick   = () => { justify_items.value = 'stretch' }
+rest_align_items.onclick     = () => { align_items.value = 'stretch' }
+rest_column_gap.onclick      = () => { column_gap.value = 0 }
+rest_row_gap.onclick	     = () => { row_gap.value = 0 }
 
+
+rest_all.onclick = function () {
+	justify_content.value	= 'normal'
+	align_content.value		= 'normal'
+	justify_items.value		= 'stretch'
+	align_items.value		= 'stretch'
+	column_gap.value		= '0'
+	row_gap.value			= '0'
 }
